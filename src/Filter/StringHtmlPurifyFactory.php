@@ -29,8 +29,15 @@ class StringHtmlPurifyFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $config   = HTMLPurifier_Config::createDefault();
-        $purifier = new HTMLPurifier($config);
+        $config = $serviceLocator->get('Config');
+
+        $htmlPurifierConfig = HTMLPurifier_Config::createDefault();
+
+        foreach ($config['html_purifier_config'] as $key => $value) {
+            $htmlPurifierConfig->set($key, $value);
+        }
+
+        $purifier = new HTMLPurifier($htmlPurifierConfig);
 
         $filter = new StringHtmlPurify($purifier);
 

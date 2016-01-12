@@ -18,4 +18,8 @@ return [
                 TravelloFilter\Filter\StringHtmlPurifyFactory::class,
         ],
     ],
+
+    'html_purifier_config' => [
+        'Cache.SerializerPath' => '/tmp',
+    ],
 ];
