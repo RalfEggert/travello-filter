@@ -7,15 +7,21 @@
  * @link       https://github.com/RalfEggert/travello-filter
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
+
+use TravelloFilter\Filter\StringHtmlPurify;
+use TravelloFilter\Filter\StringHtmlPurifyFactory;
+use TravelloFilter\Filter\StringToUrlSlug;
+use Zend\ServiceManager\Factory\InvokableFactory;
+
 return [
     'filters' => [
-        'invokables' => [
-            'StringToUrlSlug' =>
-                TravelloFilter\Filter\StringToUrlSlug::class,
+        'aliases'   => [
+            'StringToUrlSlug'  => StringToUrlSlug::class,
+            'StringHtmlPurify' => StringHtmlPurify::class,
         ],
-        'factories'  => [
-            'StringHtmlPurify' =>
-                TravelloFilter\Filter\StringHtmlPurifyFactory::class,
+        'factories' => [
+            StringToUrlSlug::class  => InvokableFactory::class,
+            StringHtmlPurify::class => StringHtmlPurifyFactory::class,
         ],
     ],
 

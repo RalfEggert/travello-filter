@@ -12,9 +12,8 @@ namespace TravelloFilter\Filter;
 
 use HTMLPurifier;
 use HTMLPurifier_Config;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class StringHtmlPurifyFactory
@@ -23,16 +22,12 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class StringHtmlPurifyFactory implements FactoryInterface
 {
-    /**
-     * @param ServiceLocatorInterface|ServiceLocatorAwareInterface $filterManager
-     *
-     * @return StringHtmlPurify
-     */
-    public function createService(ServiceLocatorInterface $filterManager)
-    {
-        $serviceLocator = $filterManager->getServiceLocator();
-
-        $config = $serviceLocator->get('Config');
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        array $options = null
+    ) {
+        $config = $container->get('Config');
 
         $htmlPurifierConfig = HTMLPurifier_Config::createDefault();
 
