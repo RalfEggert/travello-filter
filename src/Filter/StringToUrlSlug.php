@@ -10,7 +10,6 @@
 
 namespace TravelloFilter\Filter;
 
-
 use Zend\Filter\AbstractFilter;
 use Zend\Filter\Exception;
 

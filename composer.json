@@ -15,9 +15,14 @@
     "require": {
         "php": ">=5.6",
         "zendframework/zend-filter": "^2.7",
-        "zendframework/zend-modulemanager": "^2.7",
         "zendframework/zend-servicemanager": "^3.0",
         "ezyang/htmlpurifier": "^4.0"
+    },
+    "extra": {
+        "zf": {
+            "component": "TravelloFilter",
+            "config-provider": "TravelloFilter\\ConfigProvider"
+        }
     },
     "autoload": {
         "psr-4": {
