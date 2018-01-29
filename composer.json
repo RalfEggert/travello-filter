@@ -1,7 +1,7 @@
 {
     "name": "ralfeggert/travello-filter",
     "description": "Zend Framework 3 module with a couple of useful filter",
-    "license": "The MIT License (MIT)",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ralf Eggert",
